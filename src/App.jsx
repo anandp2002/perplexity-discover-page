@@ -1,7 +1,11 @@
+import FilterOptions from './components/FilterOptions';
+import Heading from './components/Heading';
+
 function App() {
   return (
     <>
-      <h1>Hello world!</h1>
+      <Heading />
+      <FilterOptions />
     </>
   );
 }
