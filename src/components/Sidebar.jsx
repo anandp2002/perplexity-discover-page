@@ -1,8 +1,9 @@
 import { MoreVertical, ChevronLast, ChevronFirst } from 'lucide-react';
-import { useState } from 'react';
+import useSidebarStore from '../store/useSidebarStore';
+import SidebarItem from './SidebarItem';
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(true);
+  const { expanded, toggleExpanded } = useSidebarStore();
 
   const sidebarItems = [
     { icon: <ChevronFirst />, text: 'Home', active: false, alert: false },
@@ -11,18 +12,21 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative ">
       {/* Sidebar */}
       <aside
-        className={`bg-gray-800 text-white h-screen transition-all duration-300 ${
-          expanded ? 'w-64' : 'w-16'
+        className={`bg-[#202221] text-white h-screen transition-all duration-300 ${
+          expanded ? 'w-60' : 'w-16'
         } hidden md:block flex-shrink-0`}
       >
         <div className="flex justify-between items-center p-4">
           <h2 className={`text-2xl ${expanded ? 'block' : 'hidden'}`}>
             perplexity
           </h2>
-          <button onClick={() => setExpanded(!expanded)} className="text-white">
+          <button
+            onClick={() => toggleExpanded(!expanded)}
+            className="text-white"
+          >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
@@ -42,21 +46,5 @@ export default function Sidebar() {
         </ul>
       </aside>
     </div>
-  );
-}
-
-function SidebarItem({ icon, text, active, alert, expanded }) {
-  return (
-    <li
-      className={`flex items-center py-2 px-3 transition-colors ${
-        active ? 'bg-gray-700' : 'hover:bg-gray-600'
-      }`}
-    >
-      {/* Icon */}
-      <span>{icon}</span>
-
-      {/* Text (shown only when expanded) */}
-      {expanded && <span className="ml-4">{text}</span>}
-    </li>
   );
 }

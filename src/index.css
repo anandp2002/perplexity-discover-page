@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #202221;
+  background-color: #191b1a;
 }
 
 /* For Chrome, Safari, and Edge */
@@ -19,4 +19,9 @@ body {
 /* Internet Explorer 10+ */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
+}
+/* In your CSS file */
+.backdrop-blur {
+  backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
 }

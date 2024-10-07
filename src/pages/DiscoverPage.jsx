@@ -1,0 +1,49 @@
+import { useEffect } from 'react';
+import useDiscoverDataStore from '../store/useDiscoverDataStore';
+import SingleCard from '../components/SingleCard';
+
+const DiscoverPage = () => {
+  const { data, setData } = useDiscoverDataStore();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          'https://www.perplexity.ai/rest/discover/feed?limit=20&offset=0&version=2.13&source=default'
+        );
+        const jsonData = await res.json();
+        setData(jsonData.items);
+        console.log(jsonData.items);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [setData]);
+
+  return (
+    <div className="mx-auto max-w-3xl px-3 md:px-0 bg-[#191b1a] my-6  ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {data.length > 0 && (
+          <>
+            {data.map((item, index) => (
+              <div
+                key={index}
+                className={
+                  index % 4 === 0
+                    ? 'md:col-span-3' // Full width for the first, fifth, ninth card, etc.
+                    : 'md:col-span-1' // Single column for the remaining cards
+                }
+              >
+                <SingleCard data={item} i={index} />
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default DiscoverPage;
