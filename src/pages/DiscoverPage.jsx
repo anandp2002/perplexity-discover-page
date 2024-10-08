@@ -11,7 +11,7 @@ const DiscoverPage = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          'api/rest/discover/feed?limit=20&offset=0&version=2.13&source=default'
+          'https://web-production-48f3.up.railway.app/https://www.perplexity.ai/rest/discover/feed?limit=20&offset=0&version=2.13&source=default'
         );
         const jsonData = await res.json();
         setData(jsonData.items);

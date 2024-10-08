@@ -4,15 +4,15 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: process.env.PORT || 3000,
-    host: true,
-    proxy: {
-      '/api': {
-        target: 'https://www.perplexity.ai',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
-  },
+  // server: {
+  //   port: 3000,
+  //   host: true,
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://www.perplexity.ai',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, ''),
+  //     },
+  //   },
+  // },
 });
