@@ -6,22 +6,32 @@ body {
   background-color: #191b1a;
 }
 
-/* For Chrome, Safari, and Edge */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* For Firefox */
 .scrollbar-hide {
   scrollbar-width: none; /* Firefox */
 }
 
-/* Internet Explorer 10+ */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
 }
-/* In your CSS file */
+
 .backdrop-blur {
-  backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
-  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.first-letter {
+  font-size: 2rem;
+  font-weight: semi-bold;
+  line-height: 1;
+  display: inline-block;
+  margin-right: 0.1em;
+}
+
+.paragraph {
+  font-size: 1rem;
+  line-height: 1.5;
 }

@@ -1,9 +1,8 @@
 import { create } from 'zustand';
 
 const useSidebarStore = create((set) => ({
-  expanded: true, // Initial state
+  expanded: true,
 
-  // Action to toggle the expanded state
   toggleExpanded: () => set((state) => ({ expanded: !state.expanded })),
 }));
 

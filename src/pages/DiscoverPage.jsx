@@ -11,7 +11,7 @@ const DiscoverPage = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          'https://www.perplexity.ai/rest/discover/feed?limit=20&offset=0&version=2.13&source=default'
+          'api/rest/discover/feed?limit=20&offset=0&version=2.13&source=default'
         );
         const jsonData = await res.json();
         setData(jsonData.items);
@@ -30,11 +30,7 @@ const DiscoverPage = () => {
           {new Array(20).fill().map((_, index) => (
             <div
               key={index}
-              className={
-                index % 4 === 0
-                  ? 'md:col-span-3' // Full width for the first, fifth, ninth card, etc.
-                  : 'md:col-span-1' // Single column for the remaining cards
-              }
+              className={index % 4 === 0 ? 'md:col-span-3' : 'md:col-span-1'}
             >
               <ShimmerCard />
             </div>
@@ -50,11 +46,7 @@ const DiscoverPage = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className={
-              index % 4 === 0
-                ? 'md:col-span-3' // Full width for the first, fifth, ninth card, etc.
-                : 'md:col-span-1' // Single column for the remaining cards
-            }
+            className={index % 4 === 0 ? 'md:col-span-3' : 'md:col-span-1'}
           >
             <SingleCard data={item} i={index} />
           </div>

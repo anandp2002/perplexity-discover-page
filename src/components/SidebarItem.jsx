@@ -5,10 +5,8 @@ const SidebarItem = ({ icon, text, active, alert, expanded }) => {
         active ? 'bg-gray-700' : 'hover:bg-gray-600'
       }`}
     >
-      {/* Icon */}
       <span>{icon}</span>
 
-      {/* Text (shown only when expanded) */}
       {expanded && <span className="ml-4">{text}</span>}
     </li>
   );
