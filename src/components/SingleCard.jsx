@@ -1,15 +1,27 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SingleCard = ({ data, i }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/discover/${i}`);
+  };
+
   return (
-    <div className="bg-[#202221] text-white w-full h-full flex flex-col justify-between rounded-lg shadow-lg overflow-hidden ease-in-out cursor-pointer duration-150 hover:-translate-y-[0.8px]">
-      <img
-        className={`aspect-[4/3] md:aspect-[1036/350] object-cover w-full h-[335px] md:h-56 rounded-t-lg ${
-          i % 4 != 0 && 'md:h-36'
-        }`}
-        src={data.first_media_items[0].image}
-        alt={data.title}
-      />
+    <div
+      onClick={handleClick}
+      className="bg-[#202221] text-white w-full h-full flex flex-col justify-between rounded-lg shadow-lg overflow-hidden ease-in-out cursor-pointer duration-150 hover:-translate-y-[0.8px]"
+    >
+      {data.first_media_items && data.first_media_items.length > 0 && (
+        <img
+          className={`aspect-[4/3] md:aspect-[1036/350] object-cover w-full h-[335px] md:h-56 rounded-t-lg ${
+            i % 4 != 0 && 'md:h-36'
+          }`}
+          src={data.first_media_items[0].image}
+          alt={data.first_media_items[0].name}
+        />
+      )}
       <div className="flex-grow p-4">
         <h1 className="text-lg font-semibold mt-2 line-clamp-2">
           {data.title}

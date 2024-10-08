@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 const Heading = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/discover');
+  };
   return (
-    <div className="flex bg-[#191b1a] text-white items-center justify-between py-4 mx-auto max-w-3xl px-3 md:px-0 border-b border-[#242627] ">
-      <div className="flex items-center">
+    <div className="flex bg-[#191b1a] text-white items-center justify-between py-4 mx-auto max-w-3xl px-3 md:px-0 ">
+      <div onClick={handleClick} className="flex items-center cursor-pointer">
         <svg
           aria-hidden="true"
           focusable="false"
